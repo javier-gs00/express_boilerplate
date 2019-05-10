@@ -1,7 +1,7 @@
-import express from 'express'
+import express, { Router } from 'express'
 import apiRoutes from './api'
 
-const router = express.Router()
+const router: Router = express.Router()
 
 router.use('/api', apiRoutes)
 

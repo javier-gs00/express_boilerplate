@@ -1,8 +1,8 @@
-import express from 'express'
+import express, { Router } from 'express'
 import bodyParser from 'body-parser'
 import dogs from 'Src/controllers/dogs'
 
-const router = express.Router()
+const router: Router = express.Router()
 
 router.use(bodyParser.json())
 router.post('/salute', dogs.salute)

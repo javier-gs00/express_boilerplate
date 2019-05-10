@@ -5,5 +5,5 @@ import { salute } from './salute'
 export default {
 	getActions,
 	performAction,
-	salute
+	salute,
 }

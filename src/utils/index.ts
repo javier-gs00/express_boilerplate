@@ -1,3 +1,3 @@
-import logInstance from './logger'
+import { logger } from './logger'
 
-export { logInstance }
+export { logger }

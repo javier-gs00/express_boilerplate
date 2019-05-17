@@ -49,7 +49,15 @@ const wLogger: Logger = winston.createLogger({
 	exitOnError: false,
 	transports: [
 		new winston.transports.File({
+			level: 'error',
 			filename: 'logs/errors.log',
+			handleExceptions: true,
+			format: winston.format.json(),
+		}),
+		new winston.transports.File({
+			level: 'info',
+			filename: 'logs/combined.log',
+			handleExceptions: true,
 			format: winston.format.json(),
 		}),
 	],
@@ -58,6 +66,8 @@ const wLogger: Logger = winston.createLogger({
 if (process.env.NODE_ENV !== 'production') {
 	wLogger.add(
 		new winston.transports.Console({
+			level: 'info',
+			handleExceptions: true,
 			format: winston.format.combine(
 				winston.format.colorize(),
 				winston.format.printf(
@@ -73,3 +83,9 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export const logger = wLogger
+
+export class LoggerStream {
+	public write(message: string): void {
+		wLogger.info(message)
+	}
+}

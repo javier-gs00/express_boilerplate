@@ -1,3 +1,3 @@
-import { logger } from './logger'
+import { logger, LoggerStream } from './logger'
 
-export { logger }
+export { logger, LoggerStream }

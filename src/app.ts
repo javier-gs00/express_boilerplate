@@ -5,6 +5,7 @@ import morgan from 'morgan'
 import cors from 'cors'
 import helmet from 'helmet'
 import routes from 'Src/routes'
+import { LoggerStream, logger } from 'Src/utils'
 
 function App(): Express {
 	const app = express()
@@ -15,19 +16,13 @@ function App(): Express {
 		res.setHeader('X-Content-Type-Options', 'nosniff')
 		next()
 	})
-	app.use(
-		morgan(
-			process.env.NODE_ENV !== 'production'
-				? 'tiny'
-				: ':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent" :response-time ms',
-		),
-	)
+	app.use(morgan('tiny', { stream: new LoggerStream() }))
 
 	app.use('/', routes)
 
 	// error handler
 	app.use(function(err: ErrorRequestHandler, req: Request, res: Response, next: NextFunction): Response {
-		console.error(err)
+		logger.error(err)
 		return res.status(500).send(err)
 	})
 

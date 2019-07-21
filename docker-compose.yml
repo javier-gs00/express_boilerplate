@@ -1,9 +1,11 @@
 version: '3'
 
 services:
-  express_app:
-    build: .
-    ports:
-      - '8000:8000'
-    command: node app/dist/index.js
-    restart: always
+    express_app:
+        build:
+            dockerfile: ./docker/prod/Dockerfile
+            context: .
+        ports:
+            - '8000:8000'
+        command: node app/dist/index.js
+        restart: always

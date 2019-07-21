@@ -4,7 +4,7 @@ import helmet from 'helmet'
 import routes from 'Src/routes'
 import mdw from 'Src/middleware'
 
-function App(): Express {
+export async function App(): Promise<Express> {
 	const app = express()
 
 	app.set('PORT', process.env.PORT || 8000)
@@ -18,5 +18,3 @@ function App(): Express {
 
 	return app
 }
-
-export default App

@@ -1,7 +1,9 @@
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
+
 import request, { Response } from 'supertest'
 import { Express } from 'express'
-import App from 'Src/app'
-import '@babel/polyfill'
+import { App } from 'Src/app'
 
 describe('Controller: Get Actions', (): void => {
 	let app: Express

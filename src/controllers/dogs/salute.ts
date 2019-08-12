@@ -7,7 +7,13 @@ export function salute(req: Request, res: Response): Response {
 
 	logger.info(`Requesting ${name} to salute`)
 
-	const dog = new Dog(name)
+	try {
+		const dog = new Dog(name)
+		const text = dog.salute()
 
-	return res.status(200).send(dog.salute())
+		return res.status(200).send(text)
+	} catch (err) {
+		logger.error(err)
+		return res.status(500).send(err)
+	}
 }

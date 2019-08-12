@@ -31,9 +31,15 @@ const myFormat = winston.format.printf(info => {
 })
 
 // eslint-disable-next-line
-const customFormat = winston.format((info: any) => {
+const customFormat = winston.format(info => {
 	if (info instanceof Error) {
-		return { ...info, timestamp: info.timestamp, level: info.level, message: info.message, stack: info.stack }
+		return {
+			...info,
+			timestamp: info.timestamp,
+			level: info.level,
+			message: info.message,
+			stack: info.stack,
+		}
 	} else {
 		return { ...info }
 	}

@@ -4,7 +4,11 @@ import { LoggerStream } from 'Src/utils'
 
 let format: string | null = null
 
-export function morganLogger(req: Request, res: Response, next: NextFunction): Function {
+export function morganLogger(
+	req: Request,
+	res: Response,
+	next: NextFunction,
+): Function {
 	if (!format) {
 		format = process.env.NODE_ENV === 'production' ? 'combined' : 'tiny'
 	}

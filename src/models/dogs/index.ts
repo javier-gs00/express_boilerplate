@@ -16,7 +16,8 @@ export default class Dog {
 	}
 
 	public performAction(action: string): string {
-		if (!this.actions.includes(action)) return `${this.name} can't perform ${action}`
+		if (!this.actions.includes(action))
+			return `${this.name} can't perform ${action}`
 
 		return `${this.name} will now ${action}`
 	}

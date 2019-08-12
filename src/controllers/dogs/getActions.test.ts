@@ -17,6 +17,8 @@ describe('Controller: Get Actions', (): void => {
 	test('Should return the list of actions', async (): Promise<void> => {
 		const response: Response = await request(app).get('/api/dogs/actions')
 		expect(response.status).toBe(200)
-		expect(response.text).toBe('Available actions are: sit, bark, salute, stand, jump, roll, crawl.')
+		expect(response.text).toBe(
+			'Available actions are: sit, bark, salute, stand, jump, roll, crawl.',
+		)
 	})
 })

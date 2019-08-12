@@ -26,12 +26,12 @@ const config = {
 winston.addColors(config.colors)
 
 // eslint-disable-next-line
-const myFormat = winston.format.printf(info => {
+const myFormat = winston.format.printf((info) => {
 	return `${info.timestamp}: ${info.level}: ${info.message}: ${info.err}`
 })
 
 // eslint-disable-next-line
-const customFormat = winston.format(info => {
+const customFormat = winston.format((info) => {
 	if (info instanceof Error) {
 		return {
 			...info,
@@ -76,13 +76,13 @@ if (process.env.NODE_ENV !== 'production') {
 			handleExceptions: true,
 			format: winston.format.combine(
 				winston.format.colorize(),
-				winston.format.printf(
-					(info): string => {
-						const message: string | JSON =
-							typeof info.message === 'string' ? info.message : JSON.stringify(info.message)
-						return `${info.timestamp} ${info.level}: ${message}`
-					},
-				),
+				winston.format.printf((info): string => {
+					const message: string | JSON =
+						typeof info.message === 'string'
+							? info.message
+							: JSON.stringify(info.message)
+					return `${info.timestamp} ${info.level}: ${message}`
+				}),
 			),
 		}),
 	)

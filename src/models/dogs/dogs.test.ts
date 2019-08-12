@@ -15,5 +15,13 @@ test('Class Dog :: perform action', (): void => {
 
 test('Class Dog :: available actions', (): void => {
 	const dog = new Dog('Bobby')
-	expect(dog.actions).toEqual(['sit', 'bark', 'salute', 'stand', 'jump', 'roll', 'crawl'])
+	expect(dog.actions).toEqual([
+		'sit',
+		'bark',
+		'salute',
+		'stand',
+		'jump',
+		'roll',
+		'crawl',
+	])
 })

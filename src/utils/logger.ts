@@ -26,11 +26,6 @@ const config = {
 winston.addColors(config.colors)
 
 // eslint-disable-next-line
-const myFormat = winston.format.printf((info) => {
-	return `${info.timestamp}: ${info.level}: ${info.message}: ${info.err}`
-})
-
-// eslint-disable-next-line
 const customFormat = winston.format((info) => {
 	if (info instanceof Error) {
 		return {

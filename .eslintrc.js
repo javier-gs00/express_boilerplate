@@ -1,5 +1,6 @@
 module.exports = {
 	parser: '@typescript-eslint/parser', // Specifies the ESLint parser
+	plugins: ['@typescript-eslint', 'prettier'],
 	extends: [
 		'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
 		'prettier/@typescript-eslint', // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
@@ -12,5 +13,16 @@ module.exports = {
 	rules: {
 		// Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
 		// e.g. "@typescript-eslint/explicit-function-return-type": "off",
+		// The following rules replicate the formating options found in the prettier file
+		'arrow-parens': ['error', 'always'],
+		'object-curly-spacing': ['error', 'always'],
+		'eol-last': ['error', 'always'],
+		'max-len': ['error', { code: 80 }],
+		'quote-props': ['error', 'consistent'],
+		'semi': ['error', 'never'],
+		'quotes': ['error', 'single'],
+		'indent': ['error', 'tab'],
+		'comma-dangle': ['error', 'always-multiline'],
+		// End of prettier formatting rules
 	},
 }

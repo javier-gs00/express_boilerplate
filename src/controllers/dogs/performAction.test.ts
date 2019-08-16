@@ -14,9 +14,7 @@ describe('Controller: Perform Action', (): void => {
 		},
 	)
 
-	test('Should perform the requested action with the given name', async (): Promise<
-		void
-	> => {
+	test('Should perform the requested action with the given name', async (): Promise<void> => { // eslint-disable-line
 		const name = 'Bobby'
 		const action = 'sit'
 		const response: Response = await request(app)

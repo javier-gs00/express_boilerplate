@@ -18,7 +18,7 @@ describe('Controller: Get Actions', (): void => {
 		const response: Response = await request(app).get('/api/dogs/actions')
 		expect(response.status).toBe(200)
 		expect(response.text).toBe(
-			'Available actions are: sit, bark, salute, stand, jump, roll, crawl.',
+			'Available actions are: sit, bark, salute, stand, jump, roll, crawl.', // eslint-disable-line
 		)
 	})
 })

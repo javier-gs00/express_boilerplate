@@ -5,7 +5,7 @@ export function errorHandler(
 	err: ErrorRequestHandler,
 	req: Request,
 	res: Response,
-	next: NextFunction,
+	next: NextFunction, // eslint-disable-line
 ): Response {
 	logger.error(err)
 	return res.status(500).send(err)

@@ -8,7 +8,7 @@ export default class Dog {
 		this.name = name || 'Rin Tin Tin'
 		this.breed = breed || 'German Sheperd'
 		this.age = age || 8
-		this.actions = ['sit', 'bark', 'salute', 'stand', 'jump', 'roll', 'crawl']
+		this.actions = ['sit', 'bark', 'salute', 'stand', 'jump', 'roll', 'crawl'] // eslint-disable-line
 	}
 
 	public salute(): string {

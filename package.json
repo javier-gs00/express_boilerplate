@@ -18,7 +18,7 @@
 		"docker:prod": "docker-compose up --build",
 		"lint": "./node_modules/.bin/eslint '*/**/*.{js,ts}'",
 		"lint:fix": "./node_modules/.bin/eslint '*/**/*.{js,ts}' --fix",
-		"start:dev": "./node_modules/.bin/nodemon.js --exec babel-node src/index.ts --extensions '.ts'",
+		"start:dev": "./node_modules/.bin/nodemon --exec babel-node --inspect=0.0.0.0:9229 src/index.ts --extensions '.ts' --source-maps inline",
 		"start:prod": "node dist/index.js",
 		"test": "./node_modules/.bin/jest",
 		"test:watch": "./node_modules/.bin/jest --watch --coverage",

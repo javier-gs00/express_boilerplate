@@ -11,5 +11,5 @@ services:
     ports:
       - '8000:8000'
       - '9229:9229'
-    command: yarn start:dev
+    command: yarn start:docker:dev
     restart: always

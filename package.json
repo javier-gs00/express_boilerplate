@@ -18,10 +18,11 @@
 		"docker:prod": "docker-compose up --build",
 		"lint": "./node_modules/.bin/eslint '*/**/*.{js,ts}'",
 		"lint:fix": "./node_modules/.bin/eslint '*/**/*.{js,ts}' --fix",
-		"start:dev": "./node_modules/nodemon/bin/nodemon.js --exec babel-node src/index.ts --extensions '.ts'",
+		"start:dev": "./node_modules/.bin/nodemon.js --exec babel-node src/index.ts --extensions '.ts'",
 		"start:prod": "node dist/index.js",
-		"test": "jest --watch --coverage",
-		"type-check": "./node_modules/typescript/bin/tsc --noEmit",
+		"test": "./node_modules/.bin/jest",
+		"test:watch": "./node_modules/.bin/jest --watch --coverage",
+		"type-check": "./node_modules/.bin/tsc --noEmit",
 		"type-check:watch": "yarn type-check -- --watch"
 	},
 	"dependencies": {
@@ -64,11 +65,25 @@
 		"eslint": "5.16.0",
 		"eslint-config-prettier": "^6.0.0",
 		"eslint-plugin-prettier": "^3.1.0",
+		"husky": "^3.0.4",
 		"jest": "^24.8.0",
+		"lint-staged": "^9.2.2",
 		"nodemon": "^1.19.1",
 		"prettier": "^1.18.2",
 		"regenerator-runtime": "^0.13.3",
 		"supertest": "^4.0.2",
 		"typescript": "^3.5.3"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "yarn type-check && lint-staged",
+			"pre-push": "yarn test"
+		}
+	},
+	"lint-staged": {
+		"*.ts": [
+			"yarn lint:fix",
+			"git add"
+		]
 	}
 }

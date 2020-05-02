@@ -1,5 +1,5 @@
 import { DogsRepository } from 'Src/pkg/storage/memory/dog.repository'
-import { DogsService } from 'Src/pkg/dog/dog.service'
+import { DogsService } from 'Src/pkg/dogs/dog.service'
 import { createRestServer } from 'Src/pkg/http/rest'
 import { ActionsRepository } from 'Src/pkg/storage/memory/actions.repository'
 import { ActionsService } from 'Src/pkg/actions/actions.service'

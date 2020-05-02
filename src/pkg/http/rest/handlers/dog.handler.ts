@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express'
 
-import { DogsService } from 'Src/pkg/dog/dog.service'
+import { DogsService } from 'Src/pkg/dogs/dog.service'
 
 function getAllDogsHandler(dogsService: DogsService) {
 	return (req: Request, res: Response) => {
@@ -16,7 +16,7 @@ function getAllDogsHandler(dogsService: DogsService) {
 function getActionsByDog(dogsService: DogsService) {
 	return (req: Request, res: Response) => {
 		const params = req.params as { dogId: string }
-		if (params.dogId) {
+		if (!params.dogId) {
 			return res.status(400).json({
 				error: 'BAD REQUEST',
 				message: 'Missing dog ID in params',

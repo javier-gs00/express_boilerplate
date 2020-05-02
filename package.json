@@ -23,7 +23,8 @@
 		"start:server:rest": "./node_modules/.bin/nodemon --exec babel-node --inspect=0.0.0.0:9229 src/cmd/server/rest --extensions '.ts' --source-maps inline",
 		"start:docker:dev": "./node_modules/.bin/nodemon --watch ./dist --inspect=0.0.0.0:9229 dist/index.js",
 		"start:prod": "node dist/index.js",
-		"test": "./node_modules/.bin/jest",
+		"test": "./node_modules/.bin/jest src --passWithNoTests",
+		"test:e2e:rest": "./node_modules/.bin/jest e2e/rest --passWithNoTests --detectOpenHandles --forceExit",
 		"test:watch": "./node_modules/.bin/jest --watch --coverage",
 		"type-check": "./node_modules/.bin/tsc --noEmit",
 		"type-check:watch": "yarn type-check -- --watch"

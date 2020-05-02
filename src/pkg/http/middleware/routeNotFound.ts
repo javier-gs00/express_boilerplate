@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
-import { logger } from 'Src/utils'
+import { logger } from 'Src/pkg/log/log'
 
-export function routeNotFound(
+export function routeNotFoundMiddleware(
 	req: Request,
 	res: Response,
 	next: NextFunction, // eslint-disable-line

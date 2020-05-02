@@ -1,7 +1,7 @@
 import { ErrorRequestHandler, Request, Response, NextFunction } from 'express'
-import { logger } from 'Src/utils'
+import { logger } from 'Src/pkg/log/log'
 
-export function errorHandler(
+export function errorHandlerMiddleware(
 	err: ErrorRequestHandler,
 	req: Request,
 	res: Response,

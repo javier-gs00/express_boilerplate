@@ -5,13 +5,13 @@ import { DogsService } from 'Src/pkg/dogs/dog.service'
 import { createDogsHandler } from './handlers/dog.handler'
 import { ActionsService } from 'Src/pkg/actions/actions.service'
 import { createActionsHandler } from './handlers/actions.handler'
-import { noSniffMiddleware } from 'Src/pkg/http/middleware/middleware/noSniff'
+import { noSniffMiddleware } from 'Src/pkg/http/middleware/noSniff'
 // eslint-disable-next-line max-len
-import { morganLoggerMiddleware } from 'Src/pkg/http/middleware/middleware/morgan'
+import { morganLoggerMiddleware } from 'Src/pkg/http/middleware/morgan'
 // eslint-disable-next-line max-len
-import { errorHandlerMiddleware } from 'Src/pkg/http/middleware/middleware/error'
+import { errorHandlerMiddleware } from 'Src/pkg/http/middleware/error'
 // eslint-disable-next-line max-len
-import { routeNotFoundMiddleware } from 'Src/pkg/http/middleware/middleware/routeNotFound'
+import { routeNotFoundMiddleware } from 'Src/pkg/http/middleware/routeNotFound'
 
 export function createRestServer(
 	actionsService: ActionsService,

@@ -11,18 +11,21 @@ module.exports = {
 		sourceType: 'module', // Allows for the use of imports
 	},
 	rules: {
+		'prettier/prettier': 'error',
 		// Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
 		// e.g. "@typescript-eslint/explicit-function-return-type": "off",
 		// The following rules replicate the formating options found in the prettier file
 		'arrow-parens': ['error', 'always'],
 		'object-curly-spacing': ['error', 'always'],
 		'eol-last': ['error', 'always'],
-		'max-len': ['error', { code: 80 }],
+		'max-len': ['error', { code: 80, ignoreComments: true }],
 		'quote-props': ['error', 'consistent'],
 		'semi': ['error', 'never'],
 		'quotes': ['error', 'single'],
 		'indent': ['error', 'tab'],
 		'comma-dangle': ['error', 'always-multiline'],
 		// End of prettier formatting rules
+		// Typescript rules
+		'@typescript-eslint/explicit-function-return-type': 'off',
 	},
 }

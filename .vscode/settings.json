@@ -1,7 +1,6 @@
 {
-	"eslint.enable": true,
-	"eslint.autoFixOnSave": true,
-	"eslint.validate": ["javascript", "typescript"],
 	"editor.formatOnSave": true,
-	"prettier.eslintIntegration": false
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	}
 }

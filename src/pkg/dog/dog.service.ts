@@ -10,7 +10,7 @@ export class DogService {
 			name: data.name,
 			breed: data.breed,
 			age: data.age,
-			actions: data.actions.map((a: { name: string }) => a.name),
+			actionIds: data.actionIds,
 		}
 	}
 

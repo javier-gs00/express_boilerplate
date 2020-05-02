@@ -1,8 +1,3 @@
-interface ActionEntity {
-	id: number
-	name: string
-}
-
 interface DogEntity {
 	id: number
 	name: string
@@ -10,9 +5,6 @@ interface DogEntity {
 	age: number
 	actionIds: number[]
 }
-
-type FindAllResponse = Array<DogEntity & { actions: ActionEntity[] }>
-type FindByIdResponse = DogEntity & { actions: ActionEntity[] }
 
 const dogs: DogEntity[] = [
 	{
@@ -31,33 +23,12 @@ const dogs: DogEntity[] = [
 	},
 ]
 
-const actions: ActionEntity[] = [
-	{ id: 1, name: 'sit' },
-	{ id: 2, name: 'bark' },
-	{ id: 3, name: 'salute' },
-	{ id: 4, name: 'stand' },
-	{ id: 5, name: 'jump' },
-	{ id: 6, name: 'roll' },
-	{ id: 7, name: 'crawl' },
-]
+type FindAllResponse = Array<DogEntity>
+type FindByIdResponse = DogEntity
 
 export class DogRepository {
 	public findAll(): FindAllResponse {
-		const response = dogs.map((dog) => {
-			const dogActions: ActionEntity[] = []
-			for (const actionId of dog.actionIds) {
-				const action = actions.find((a) => a.id === actionId)
-				if (!action) {
-					continue
-				}
-				dogActions.push(action)
-			}
-			return {
-				...dog,
-				actions: dogActions,
-			}
-		})
-		return response
+		return dogs
 	}
 
 	public findById(id: number): FindByIdResponse | null {
@@ -65,17 +36,6 @@ export class DogRepository {
 		if (!dog) {
 			return null
 		}
-		const dogActions: ActionEntity[] = []
-		for (const actionId of dog.actionIds) {
-			const action = actions.find((a) => a.id === actionId)
-			if (!action) {
-				continue
-			}
-			dogActions.push(action)
-		}
-		return {
-			...dog,
-			actions: dogActions,
-		}
+		return dog
 	}
 }

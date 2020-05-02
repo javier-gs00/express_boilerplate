@@ -1,12 +1,12 @@
 import express, { Express } from 'express'
-import { DogService } from 'Src/pkg/dog/dog.service'
+import { DogsService } from 'Src/pkg/dog/dog.service'
 import { createDogsHandler } from './handlers/dog.handler'
 
-export function createRestServer(dogService: DogService): Express {
+export function createRestServer(dogsService: DogsService): Express {
 	const app = express()
 
 	const router = express.Router()
-	createDogsHandler(router, dogService)
+	createDogsHandler(router, dogsService)
 
 	app.use('/', router)
 

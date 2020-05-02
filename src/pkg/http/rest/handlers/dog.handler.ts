@@ -1,10 +1,10 @@
 import { Router, Request, Response } from 'express'
 
-import { DogService } from 'Src/pkg/dog/dog.service'
+import { DogsService } from 'Src/pkg/dog/dog.service'
 
-function getAllDogsHandler(dogService: DogService) {
+function getAllDogsHandler(dogsService: DogsService) {
 	return (req: Request, res: Response) => {
-		const dogs = dogService.getAll()
+		const dogs = dogsService.getAll()
 
 		return res.json({
 			count: dogs.length,
@@ -13,11 +13,32 @@ function getAllDogsHandler(dogService: DogService) {
 	}
 }
 
+function getActionsByDog(dogsService: DogsService) {
+	return (req: Request, res: Response) => {
+		const params = req.params as { dogId: string }
+		if (params.dogId) {
+			return res.status(400).json({
+				error: 'BAD REQUEST',
+				message: 'Missing dog ID in params',
+			})
+		}
+		const actions = dogsService.getActionsByDog(parseInt(params.dogId, 10))
+		if (!actions) {
+			return res.status(404).json({
+				error: 'NOT FOUND',
+				message: 'The dog with the specified id does not exist',
+			})
+		}
+		return res.json({
+			data: actions,
+		})
+	}
+}
+
 export function createDogsHandler(
 	router: Router,
-	dogService: DogService,
+	dogsService: DogsService,
 ): void {
-	router.get('/api/dogs', getAllDogsHandler(dogService))
-	// router.get('/api/dogs/:dogId/actions', dogService.getActionsByDog())
-	// router.get('/api/dogs/:dogId/actions/:actionId', dogService.getDogAction())
+	router.get('/api/dogs', getAllDogsHandler(dogsService))
+	router.get('/api/dogs/:dogId/actions', getActionsByDog(dogsService))
 }

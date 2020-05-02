@@ -1,10 +1,12 @@
-import { DogRepository } from 'Src/pkg/storage/memory/dog.repository'
-import { DogService } from 'Src/pkg/dog/dog.service'
+import { DogsRepository } from 'Src/pkg/storage/memory/dog.repository'
+import { DogsService } from 'Src/pkg/dog/dog.service'
 import { createRestServer } from 'Src/pkg/http/rest'
+import { ActionsRepository } from 'Src/pkg/storage/memory/actions.repository'
 
 function bootstrap() {
-	const dogRepository = new DogRepository()
-	const dogService = new DogService(dogRepository)
+	const actionsRepository = new ActionsRepository()
+	const dogsRepository = new DogsRepository()
+	const dogService = new DogsService(actionsRepository, dogsRepository)
 
 	const server = createRestServer(dogService)
 	server.listen(3000, () => {

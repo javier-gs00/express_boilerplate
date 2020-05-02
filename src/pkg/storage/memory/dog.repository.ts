@@ -26,7 +26,7 @@ const dogs: DogEntity[] = [
 type FindAllResponse = Array<DogEntity>
 type FindByIdResponse = DogEntity
 
-export class DogRepository {
+export class DogsRepository {
 	public findAll(): FindAllResponse {
 		return dogs
 	}
